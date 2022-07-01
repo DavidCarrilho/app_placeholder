@@ -1,6 +1,7 @@
 # app_placeholder
 
-A new Flutter project.
+A Application Flutter project consuming an api.
+Created in the v3.0.1 FLutter.
 
 ## Getting Started
 
