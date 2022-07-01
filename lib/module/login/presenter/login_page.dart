@@ -2,6 +2,7 @@ import 'package:app_placeholder/module/login/components/custom_login_button_comp
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
+import '../../../core/widgets/custom_text_field_widget.dart';
 import '../controllers/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
@@ -19,16 +20,14 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.person, size: MediaQuery.of(context).size.height * 0.2),
-            TextField(
-              decoration: const InputDecoration(
-                label: Text('Login'),
-              ),
-              onChanged: _controller.setLogin,
+            CustomTextFieldWidget(
+              label: 'Login',
+              onChanged: (_controller.setLogin),
             ),
-            TextField(
-              decoration: const InputDecoration(label: Text('Senha')),
+            CustomTextFieldWidget(
+              label: 'Senha',
+              onChanged: (_controller.setPass),
               obscureText: true,
-              onChanged: _controller.setPass,
             ),
             const SizedBox(height: 15),
             CustomLoginButtonComponent(
