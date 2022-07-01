@@ -1,13 +1,13 @@
 import '../components/custom_login_button_component.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
+// import 'dart:developer' as developer;
 
 import '../../../core/widgets/custom_text_field_widget.dart';
 import '../controllers/login_controller.dart';
 
 class LoginPage extends StatelessWidget {
   final LoginController _controller = LoginController();
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   LoginPage({Key? key}) : super(key: key);
 

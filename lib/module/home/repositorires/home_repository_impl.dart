@@ -12,7 +12,7 @@ class HomeRepositoryImpl implements HomeRepository {
   Future<List<PostModel>> getList() async {
     try {
       var response = await Dio().get('https://jsonplaceholder.typicode.com/posts');
-      // developer.log('$response');
+      developer.log('$response');
       return (response.data as List).map((e) => PostModel.fromJson(e)).toList();
     } catch (e) {
       developer.log('$e');

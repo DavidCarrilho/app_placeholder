@@ -23,23 +23,25 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ValueListenableBuilder<List<PostModel>>(
-              valueListenable: _homeController.posts,
-              builder: (_, list, __) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: list.length,
-                  itemBuilder: (_, index) => ListTile(
-                    title: Text(list[index].title),
-                  ),
-                );
-              },
+      appBar: AppBar(
+        title: const Text('Home'),
+        centerTitle: true,
+      ),
+      body: ValueListenableBuilder<List<PostModel>>(
+        valueListenable: _homeController.posts,
+        builder: (_, list, __) {
+          return ListView.separated(
+            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: list.length,
+            itemBuilder: (_, index) => ListTile(
+              leading: Text(list[index].id.toString()),
+              title: Text(list[index].title),
+              trailing: const Icon(Icons.arrow_forward_ios),
             ),
-          ],
-        ),
+            separatorBuilder: (_, __) => const Divider(),
+          );
+        },
       ),
     );
   }
