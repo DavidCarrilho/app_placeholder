@@ -1,4 +1,4 @@
-import 'package:app_placeholder/pages/login_page.dart';
+import 'package:app_placeholder/module/login/presenter/login_page.dart';
 import 'package:app_placeholder/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
