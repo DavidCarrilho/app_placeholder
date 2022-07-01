@@ -1,4 +1,4 @@
-import 'package:app_placeholder/module/login/components/custom_login_button_component.dart';
+import '../components/custom_login_button_component.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 

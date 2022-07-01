@@ -1,7 +1,8 @@
-import 'package:app_placeholder/core/models/post_model.dart';
-import 'package:app_placeholder/module/home/controllers/home_controller.dart';
-import 'package:app_placeholder/module/home/repositorires/home_repository_impl.dart';
+import '../../../core/models/post_model.dart';
+import '../controllers/home_controller.dart';
 import 'package:flutter/material.dart';
+
+import '../repositorires/home_repository_impl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,16 +23,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ValueListenableBuilder<List<PostModel>>(
-        valueListenable: _homeController.posts,
-        builder: (_, list, __) {
-          return ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (_, index) => ListTile(
-              title: Text(list[index].title),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ValueListenableBuilder<List<PostModel>>(
+              valueListenable: _homeController.posts,
+              builder: (_, list, __) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: list.length,
+                  itemBuilder: (_, index) => ListTile(
+                    title: Text(list[index].title),
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }

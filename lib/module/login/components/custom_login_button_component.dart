@@ -1,6 +1,8 @@
-import 'package:app_placeholder/module/login/controllers/login_controller.dart';
-import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
+
+import 'package:flutter/material.dart';
+
+import '../controllers/login_controller.dart';
 
 class CustomLoginButtonComponent extends StatelessWidget {
   final LoginController loginController;

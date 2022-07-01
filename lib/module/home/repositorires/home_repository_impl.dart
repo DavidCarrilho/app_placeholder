@@ -1,14 +1,22 @@
-import 'dart:convert';
+import 'dart:developer' as developer;
 
-import 'package:app_placeholder/core/models/post_model.dart';
-import 'package:app_placeholder/module/home/repositorires/home_repository.dart';
-import 'package:flutter/services.dart';
+import 'package:dio/dio.dart';
+
+import '../../../core/models/post_model.dart';
+import 'home_repository.dart';
 
 class HomeRepositoryImpl implements HomeRepository {
+  Dio dio = Dio();
+
   @override
   Future<List<PostModel>> getList() async {
-    var value = await rootBundle.loadString('assets/data.json');
-    List postJson = jsonDecode(value);
-    return postJson.map((e) => PostModel.fromJson(e)).toList();
+    try {
+      var response = await dio.get('https://jsonplaceholder.typicode.com/posts');
+      // developer.log('$response');
+      return (response.data as List).map((e) => PostModel.fromJson(e)).toList();
+    } catch (e) {
+      developer.log('$e');
+    }
+    return [];
   }
 }

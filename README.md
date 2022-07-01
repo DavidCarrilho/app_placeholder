@@ -3,6 +3,9 @@
 A Application Flutter project consuming an api.
 Created in the v3.0.1 FLutter.
 
+endpooint de posts ultizado
+<https://jsonplaceholder.typicode.com/posts>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

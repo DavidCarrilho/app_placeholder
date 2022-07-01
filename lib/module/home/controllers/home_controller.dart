@@ -1,5 +1,5 @@
-import 'package:app_placeholder/core/models/post_model.dart';
-import 'package:app_placeholder/module/home/repositorires/home_repository.dart';
+import '../../../core/models/post_model.dart';
+import '../repositorires/home_repository.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeController {
