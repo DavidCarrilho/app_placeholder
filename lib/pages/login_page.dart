@@ -1,7 +1,12 @@
+import 'package:app_placeholder/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as developer;
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  final LoginController _controller = LoginController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +17,45 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.person, size: MediaQuery.of(context).size.height * 0.2),
-            const TextField(decoration: InputDecoration(label: Text('Login'))),
-            const TextField(decoration: InputDecoration(label: Text('Senha')), obscureText: true),
+            TextField(
+              decoration: const InputDecoration(
+                label: Text('Login'),
+              ),
+              onChanged: _controller.setLogin,
+            ),
+            TextField(
+              decoration: const InputDecoration(label: Text('Senha')),
+              obscureText: true,
+              onChanged: _controller.setPass,
+            ),
             const SizedBox(height: 15),
-            ElevatedButton(onPressed: () {}, child: const Text('LOGIN'))
+            ValueListenableBuilder<bool>(
+              valueListenable: _controller.inLoader,
+              builder: (_, inLoader, __) => inLoader
+                  ? const CircularProgressIndicator()
+                  : ElevatedButton(
+                      onPressed: () {
+                        _controller.auth().then(
+                          (result) {
+                            if (result) {
+                              developer.log('Sucesso!');
+                              Navigator.of(context).pushReplacementNamed('/home');
+                            } else {
+                              developer.log('Falha!');
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Falha ao realizar login!'),
+                                  duration: Duration(seconds: 5),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
+                          },
+                        );
+                      },
+                      child: const Text('LOGIN'),
+                    ),
+            )
           ],
         ),
       ),
