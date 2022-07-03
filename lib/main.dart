@@ -1,3 +1,4 @@
+import 'module/home/presenter/details_page.dart';
 import 'module/login/presenter/login_page.dart';
 import 'pages/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/splash': (_) => const SplashPage(),
         '/login': (_) => LoginPage(),
         '/home': (_) => const HomePage(),
+        '/details': (_) => const DetailsPage(),
       },
     );
   }
