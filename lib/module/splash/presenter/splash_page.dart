@@ -12,7 +12,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    
+
     Future.wait([PrefsService.isAuth(), Future.delayed(const Duration(seconds: 2))]).then((value) =>
         value[0]
             ? Navigator.of(context).pushReplacementNamed('/home')
@@ -24,14 +24,17 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.green.shade700,
-        child: const Center(
-          child: Center(
-            child: CircularProgressIndicator(
-              color: Colors.white54,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(
+              'Splash',
+              style: TextStyle(fontSize: 40),
             ),
-          ),
+            SizedBox(height: 44),
+            CircularProgressIndicator(),
+          ],
         ),
       ),
     );

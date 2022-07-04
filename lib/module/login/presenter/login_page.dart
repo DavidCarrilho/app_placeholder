@@ -12,22 +12,30 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(50),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.person, size: MediaQuery.of(context).size.height * 0.2),
-            CustomTextFieldWidget(
-              label: 'Login',
-              onChanged: (_controller.setLogin),
+            const Text(
+              'Login',
+              style: TextStyle(fontSize: 40),
             ),
-            CustomTextFieldWidget(
-              label: 'Senha',
-              onChanged: (_controller.setPass),
-              obscureText: true,
-            ),
-            const SizedBox(height: 15),
-            CustomLoginButtonComponent(loginController: _controller)
+            const SizedBox(height: 44),
+            Column(
+              children: [
+                CustomTextFieldWidget(
+                  label: 'Login',
+                  onChanged: (_controller.setLogin),
+                ),
+                CustomTextFieldWidget(
+                  label: 'Senha',
+                  onChanged: (_controller.setPass),
+                  obscureText: true,
+                ),
+                const SizedBox(height: 40),
+                CustomLoginButtonComponent(loginController: _controller)
+              ],
+            )
           ],
         ),
       ),

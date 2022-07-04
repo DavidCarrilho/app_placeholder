@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {
               PrefsService.logout();
-              Navigator.of(context).pushNamedAndRemoveUntil('/login', (_) => true);
+              Navigator.of(context).pushReplacementNamed('/login');
             },
             icon: const Icon(Icons.logout),
           )

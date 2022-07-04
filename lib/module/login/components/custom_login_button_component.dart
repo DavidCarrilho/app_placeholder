@@ -16,29 +16,58 @@ class CustomLoginButtonComponent extends StatelessWidget {
     return ValueListenableBuilder<bool>(
       valueListenable: loginController.inLoader,
       builder: (_, inLoader, __) => inLoader
-          ? const CircularProgressIndicator()
-          : ElevatedButton(
-              onPressed: () {
-                loginController.auth().then(
-                  (result) {
-                    if (result) {
-                      developer.log('Sucesso!');
-                      Navigator.of(context).pushReplacementNamed('/home');
-                    } else {
-                      developer.log('Falha!');
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Falha ao realizar login!'),
-                          duration: Duration(seconds: 5),
-                          backgroundColor: Colors.red,
-                        ),
-                      );
-                    }
-                  },
-                );
-              },
+          ? const PrimaryButton(
+              child: SizedBox(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+              ),
+            )
+          : PrimaryButton(
+              loginController: loginController,
               child: const Text('LOGIN'),
             ),
+    );
+  }
+}
+
+class PrimaryButton extends StatelessWidget {
+  const PrimaryButton({
+    Key? key,
+    this.loginController,
+    this.child,
+  }) : super(key: key);
+
+  final LoginController? loginController;
+  final Widget? child;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: () {
+          loginController!.auth().then(
+            (result) {
+              if (result) {
+                developer.log('Sucesso!');
+                Navigator.of(context).pushReplacementNamed('/home');
+              } else {
+                developer.log('Falha!');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Falha ao realizar login!'),
+                    duration: Duration(seconds: 5),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
+            },
+          );
+        },
+        child: child,
+      ),
     );
   }
 }
