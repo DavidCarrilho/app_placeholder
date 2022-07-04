@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Home'),
         centerTitle: true,
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.logout))],
       ),
       body: ValueListenableBuilder<List<PostModel>>(
         valueListenable: _homeController.posts,
