@@ -13,7 +13,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    Future.wait([PrefsService.isAuth(), Future.delayed(const Duration(seconds: 2))]).then((value) =>
+    Future.wait([PrefsService.isAuth(), Future.delayed(const Duration(seconds: 4))]).then((value) =>
         value[0]
             ? Navigator.of(context).pushReplacementNamed('/home')
             : Navigator.of(context).pushReplacementNamed('/login'));
