@@ -1,3 +1,5 @@
+import 'package:app_placeholder/services/prefs_service.dart';
+
 import '../../../core/models/post_model.dart';
 import '../controllers/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +28,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Home'),
         centerTitle: true,
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.logout))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              PrefsService.logout();
+              Navigator.of(context).pushNamedAndRemoveUntil('/login', (_) => true);
+            },
+            icon: const Icon(Icons.logout),
+          )
+        ],
       ),
       body: ValueListenableBuilder<List<PostModel>>(
         valueListenable: _homeController.posts,

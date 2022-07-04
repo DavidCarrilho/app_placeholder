@@ -11,12 +11,12 @@ class LoginController {
 
   Future<bool> auth() async {
     inLoader.value = true;
-    // developer.log('Login: $_login, Password: $_pass');
     await Future.delayed(const Duration(seconds: 3));
-    inLoader.value = false;
     if (_login == 'admin' && _pass == '123') {
       PrefsService.save(_login!);
+      return true;
     }
+    inLoader.value = false;
     return false;
   }
 }
