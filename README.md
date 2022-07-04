@@ -4,7 +4,7 @@ A Application Flutter project consuming an api.
 Created in the v3.0.1 FLutter.
 
 <p float="left">
-  <img src="https://github.com/DavidCarrilho/app_placeholder/blob/main/screenshot/gif.gif" width="800" />
+  <img src="https://github.com/DavidCarrilho/app_placeholder/blob/main/screenshot/gif.gif" width="800" height="100" />
 </p>
 
 endpooint de posts ultizado
