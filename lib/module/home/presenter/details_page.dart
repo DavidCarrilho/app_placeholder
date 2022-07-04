@@ -9,7 +9,7 @@ class DetailsPage extends StatelessWidget {
     PostModel args = ModalRoute.of(context)!.settings.arguments as PostModel;
     return Scaffold(
       appBar: AppBar(
-        title: Text(args.title),
+        title: Text(args.title.toUpperCase()),
         centerTitle: true,
       ),
       body: Container(

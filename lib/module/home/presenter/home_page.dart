@@ -26,10 +26,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Text('Home'.toUpperCase()),
         centerTitle: true,
         actions: [
           IconButton(
+            tooltip: 'Sair',
             onPressed: () {
               PrefsService.logout();
               Navigator.of(context).pushReplacementNamed('/login');
@@ -47,10 +48,12 @@ class _HomePageState extends State<HomePage> {
             );
           } else {
             return ListView.separated(
+              padding: const EdgeInsets.symmetric(vertical: 16),
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               itemCount: list.length,
               itemBuilder: (_, index) => ListTile(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 24),
                 leading: Text(list[index].id.toString()),
                 title: Text(list[index].title),
                 trailing: const Icon(Icons.arrow_forward_ios),
