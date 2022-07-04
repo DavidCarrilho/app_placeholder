@@ -41,18 +41,24 @@ class _HomePageState extends State<HomePage> {
       body: ValueListenableBuilder<List<PostModel>>(
         valueListenable: _homeController.posts,
         builder: (_, list, __) {
-          return ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: list.length,
-            itemBuilder: (_, index) => ListTile(
-              leading: Text(list[index].id.toString()),
-              title: Text(list[index].title),
-              trailing: const Icon(Icons.arrow_forward_ios),
-              onTap: () => Navigator.of(context).pushNamed('/details', arguments: list[index]),
-            ),
-            separatorBuilder: (_, __) => const Divider(),
-          );
+          if (list.isEmpty) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            return ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: list.length,
+              itemBuilder: (_, index) => ListTile(
+                leading: Text(list[index].id.toString()),
+                title: Text(list[index].title),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () => Navigator.of(context).pushNamed('/details', arguments: list[index]),
+              ),
+              separatorBuilder: (_, __) => const Divider(),
+            );
+          }
         },
       ),
     );
